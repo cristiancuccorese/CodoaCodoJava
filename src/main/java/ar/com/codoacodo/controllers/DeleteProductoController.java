@@ -1,29 +1,37 @@
 package ar.com.codoacodo.controllers;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import ar.com.codoacodo.dao.IProductoDao;
 import ar.com.codoacodo.dao.impl.ProductoDAOMysqlImpl;
-import ar.com.codoacodo.db.AdministradorDeConexiones;
 
-public class DeleteProductoController {
+@WebServlet("/DeleteProductoController")
+public class DeleteProductoController extends HttpServlet {
 
-	public static void main(String[] args) throws Exception{
-
-		IProductoDao dao = new ProductoDAOMysqlImpl();}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Long id = Long.parseLong(req.getParameter("idProducto"));// viene como String -> Long.parseLong()
+		IProductoDao dao = new ProductoDAOMysqlImpl();
 		
-		public void delete(Long id) throws Exception{
-			// 1 - necesito la Connection
-			Connection connection = AdministradorDeConexiones.getConnection();
+		// eliminar
+		try {
+			dao.delete(id);
+			// mensaje de exito
+			req.setAttribute("success", List.of("Se he eliminado el producto con id:" + id ));
+		} catch (Exception e) {
+			e.printStackTrace();
+			// mensaje de error
+			req.setAttribute("errors", List.of("NO se he eliminado el producto :" + e.getMessage()));
+		} // ctrl+t
 
-			// 2 - arma el statement
-			String sql = "DELETE FROM PRODUCTO WHERE ID="+id;
-			Statement statement = connection.createStatement();
-
-			// 3 - resultset
-			int eliminado = statement.executeUpdate(sql);//1 o 2
-			System.out.println(eliminado);
-		}
-
-
+		// ahora redirect!!!!
+		getServletContext().getRequestDispatcher("/FindAllProductoController").forward(req, resp);
+	}
 }

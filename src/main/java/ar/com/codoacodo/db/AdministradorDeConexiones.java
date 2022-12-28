@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class AdministradorDeConexiones {
 
 	public static Connection getConnection() {
-		String hosts = "127.0.0.1";//localhost
+		String hosts = "localhost";//localhost
 		String port = "3306";
 		String password = "root";
 		String username = "root";

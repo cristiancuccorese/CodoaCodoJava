@@ -73,8 +73,28 @@ public class ProductoDAOMysqlImpl implements IProductoDao {
 	}
 
 	@Override
-	public void update(Producto producto) {
-		// TODO Auto-generated method stub
+	public void update(Producto producto) throws Exception {
+		// 1 - necesito la Connection
+		Connection connection = AdministradorDeConexiones.getConnection();
+
+		// 2 - arma el statement
+
+		Statement statement = connection.createStatement();
+
+		String updateSql = "UPDATE producto  SET titulo = ? , precio = ? , autor= ? , img= ?  WHERE id = ?";
+		try {
+			PreparedStatement updateStmt = connection.prepareStatement(updateSql);
+			updateStmt.setString(1, producto.getTitulo());
+			updateStmt.setDouble(2, producto.getPrecio());
+			updateStmt.setString(3, producto.getAutor());
+			updateStmt.setString(4, producto.getImg());
+			updateStmt.setLong(5, producto.getId());
+			updateStmt.execute();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 
 	}
 
@@ -122,6 +142,31 @@ public class ProductoDAOMysqlImpl implements IProductoDao {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public List<Producto> search(String clave) throws Exception {
+		// 1 - necesito la Connection
+		Connection connection = AdministradorDeConexiones.getConnection();
+
+		// 2 - arma el statement
+		String sql = "SELECT * FROM PRODUCTO WHERE TITULO LIKE ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+
+		// setear el valor que va en remplazo del ?
+		statement.setString(1, "%" + clave + "%");
+
+		// 3 - resultset
+		ResultSet resultSet = statement.executeQuery();
+
+		// Interface i = new ClaseQueImplementaLaInterface();
+		List<Producto> productos = new ArrayList<Producto>();
+
+		// verifico si hay datos
+		while (resultSet.next()) {
+			productos.add(this.crearProducto(resultSet));
+		}
+
+		return productos;
+	}
 
 }

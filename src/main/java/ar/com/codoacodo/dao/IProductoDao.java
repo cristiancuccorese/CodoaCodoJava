@@ -18,7 +18,7 @@ public interface IProductoDao {
 	public void delete(Long id) throws Exception;
 	//delete from producto where id = id
 	
-	public void update(Producto producto);
+	public void update(Producto producto) throws Exception;
 	//update producto 
 	//set campo1 = valor1.....
 	//where id = producto.id
@@ -26,5 +26,9 @@ public interface IProductoDao {
 	public Long create(Producto newProduct) throws Exception;
 	//insert into producto (campo1, ....m campoN)
 	//values(newProducto.campo1, ...newProducto.campoN)
+
+	public List<Producto> search(String clave) throws Exception;
+
+	
 	
 }

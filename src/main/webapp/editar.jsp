@@ -1,3 +1,7 @@
+<%@page import="ar.com.codoacodo.domain.Producto"%>
+<%
+	Producto p = (Producto)request.getAttribute("producto");
+%>
 <!Doctype html>
 <html>
 	<head>
@@ -5,26 +9,24 @@
 	</head>
 	<body>
 		<jsp:include page="navbar.jsp"/>
-		
-		
-		
 		<main class="container">
-			<h1>Nuevo Producto</h1>
-			<jsp:include page="mensajeria.jsp"/>
+			<h1>Editar Producto</h1>
 			<div class="row">
 				<div class="col-12">
 					<form class="row g-3 needs-validation" novalidate
-						action="<%=request.getContextPath()%>/CreateProductoController"
+						action="<%=request.getContextPath()%>/UpdateProductController"
 						method="POST">
+					  <input type="hidden" name="id" value="<%=p.getId()%>">
 					  <div class="col-md-4">
 					    <label for="validationCustom01" class="form-label">
 					    	C&oacute;digo
 					    </label>
 					    <input type="text"
+					    	readonly="readonly"
 					    	name="codigo" 
 					    	class="form-control" 
 					    	id="validationCustom01" 
-					    	value="" 
+					    	value="<%=p.getCodigo()%>" 
 					    	required>
 					    <div class="valid-feedback">
 					      Looks good!
@@ -36,7 +38,7 @@
 					    	name="titulo" 
 					    	class="form-control" 
 					    	id="validationCustom02"
-					    	value="" 
+					    	value="<%=p.getTitulo()%>" 
 					    	required>
 					    <div class="valid-feedback">
 					      Looks good!
@@ -48,7 +50,7 @@
 					    	name="precio" 
 					    	class="form-control" 
 					    	id="validationCustom02"
-					    	value="" 
+					    	value="<%=p.getPrecio()%>" 
 					    	required>
 					    <div class="valid-feedback">
 					      Looks good!
@@ -58,8 +60,10 @@
 					    <label for="validationCustom03" class="form-label">Fecha Alta</label>
 					    <input type="date"
 					    	name="fechaAlta" 
+					    	readonly="readonly"
 					    	class="form-control" 
-					    	id="validationCustom03" 
+					    	id="validationCustom03"
+					    	value="<%=p.getFechaAlta()%>"
 					    	required>
 					    <div class="invalid-feedback">
 					      Please provide a valid city.
@@ -70,7 +74,8 @@
 					    <input type="text"
 					    	name="autor" 
 					    	class="form-control" 
-					    	id="validationCustom03" 
+					    	id="validationCustom03"
+					    	value="<%=p.getAutor()%>" 
 					    	required>
 					    <div class="invalid-feedback">
 					      Please select a valid state.
@@ -83,6 +88,7 @@
 						  	name="img" 
 						  	class="form-control" 
 						  	id="inputGroupFile04" 
+						  	value="<%=p.getImg()%>"
 						  	aria-describedby="inputGroupFileAddon04" 
 						  	aria-label="Upload">
 						</div>
@@ -91,7 +97,7 @@
 					    </div>
 					  </div>
 					  <div class="col-12">
-					    <button class="btn btn-primary" type="submit">Nuevo</button>
+					    <button class="btn btn-primary" type="submit">Editar</button>
 					  </div>
 					</form>
 				</div>
