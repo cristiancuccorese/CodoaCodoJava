@@ -1,0 +1,60 @@
+body{
+    
+    background-image: linear-gradient(rgba(104, 26, 26, 0.5), rgba(0, 0, 0, 0.5)), url("https://p4.wallpaperbetter.com/wallpaper/826/37/65/animales-ave-cuervo-negro-wallpaper-preview.jpg");
+        background-repeat: no-repeat;
+        color: white;
+        background-size: 100vw 100%;
+        background-position: center;
+        background-attachment: fixed;
+}
+
+
+
+.slide {
+    margin-top: 1px;
+    background-color: black;
+    
+   
+   
+}
+
+
+.slide img {
+    height:620px;
+    margin-left: 110px;
+    margin-right: 105px;
+    
+}
+h1 {
+    color: rgb(236, 230, 230);
+    font-variant: small-caps;
+    font-style: italic;
+}
+.container{
+    margin-top: 170px;
+    color: antiquewhite;
+    font-size: x-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}   
+.container-fluid{
+    margin-top:10px ;
+    font-size: x-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+tr{
+    color: white;
+}
+.btn{
+    
+    color:rgb(24, 23, 23);
+    background-color: rgb(239, 243, 245);
+    border: 2px solid red;
+    font-family: monospace;
+    border-radius: 100px;
+
+}
+.modal{
+color: rgb(24, 24, 23);
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}   

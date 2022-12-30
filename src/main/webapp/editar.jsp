@@ -84,7 +84,7 @@
 					  <div class="col-md-4">
 					    <label for="validationCustom05" class="form-label">Imagen</label>
 					    <div class="input-group">
-						  <input type="file"
+						  <input type="url"
 						  	name="img" 
 						  	class="form-control" 
 						  	id="inputGroupFile04" 

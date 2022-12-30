@@ -11,9 +11,9 @@
 <body>
 	<!-- aca va el navbar.jsp -->
 	<jsp:include page="navbar.jsp" />
-	<main class="container">
-		<h1>Listado de Producto</h1>
-		<jsp:include page="mensajeria.jsp"/>
+	<main class="container-fluid">
+		<h1>Lista de Libros</h1>
+		<jsp:include page="mensajeria.jsp" />
 		<section>
 			<table class="table">
 				<thead>
@@ -43,7 +43,7 @@
 						<td><%=p.getPrecio()%></td>
 						<td><%=p.getFechaAlta()%></td>
 						<td><%=p.getAutor()%></td>
-						<td><%=p.getImg()%></td>
+						<td><img src=<%=p.getImg()%> width="75" height="75"/></td>
 
 						<td><a class="btn btn-info" role="button"
 							href="<%=request.getContextPath()%>/UpdateProductController?id=<%=p.getId()%>">Editar</a>
@@ -69,7 +69,7 @@
 					action="<%=request.getContextPath()%>/DeleteProductoController">
 					<input type="hidden" name="idProducto" id="idProducto">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Eliminar
+						<h5 class="modal-title text-black" id="exampleModalLabel">Eliminar
 							Producto</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>

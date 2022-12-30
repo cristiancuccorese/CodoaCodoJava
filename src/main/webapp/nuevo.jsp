@@ -9,7 +9,7 @@
 		
 		
 		<main class="container">
-			<h1>Nuevo Producto</h1>
+			<h1>Nuevo Libro</h1>
 			<jsp:include page="mensajeria.jsp"/>
 			<div class="row">
 				<div class="col-12">
@@ -79,7 +79,7 @@
 					  <div class="col-md-4">
 					    <label for="validationCustom05" class="form-label">Imagen</label>
 					    <div class="input-group">
-						  <input type="file"
+						  <input type="url"
 						  	name="img" 
 						  	class="form-control" 
 						  	id="inputGroupFile04" 
@@ -91,11 +91,13 @@
 					    </div>
 					  </div>
 					  <div class="col-12">
-					    <button class="btn btn-primary" type="submit">Nuevo</button>
+					    <button class="btn btn-danger btn-sm text-dark" type="submit" >Nuevo</button>
 					  </div>
 					</form>
 				</div>
 			</div>
+		
 		</main>
+	
 	</body>
 </html>

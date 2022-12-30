@@ -26,6 +26,12 @@ public class CreateProductoController extends HttpServlet {
 		String precio = req.getParameter("precio");// name del input
 		String fechaAlta = req.getParameter("fechaAlta");// name del input
 		String autor = req.getParameter("autor");// name del input
+		String img = req.getParameter("img");
+		
+		
+		
+		
+		
 		// validaciones!
 		List<String> errores = new ArrayList<>();
 		if (titulo == null || titulo.trim().isEmpty()) {
@@ -60,7 +66,7 @@ public class CreateProductoController extends HttpServlet {
 			return;
 		}
 		// TODO ver de armar logica para cargar binario
-		String img = req.getParameter("img");// name del input(tratamiento especial)
+		//String img = req.getParameter("img");// name del input(tratamiento especial)
 
 		IProductoDao dao = new ProductoDAOMysqlImpl();
 
